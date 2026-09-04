@@ -1,0 +1,13 @@
+&emsp;&emsp;&emsp; En esta oportunidad los parámetro de la señal los mantendremos constantes salvo la frecuencia de esta. Definimos una función con los siguientes parámetros &nbsp;
+- La amplitud máxima de la senoidal (volts)
+- Su valor medio o componente de contínua (volts)
+- La frecuencia (Hz)
+- La fase (radianes)
+- La cantidad de muestras digitalizada por el ADC (# muestras)
+- La frecuencia de muestreo del ADC.
+
+
+&emsp;&emsp;&emsp; Una vez definida la función probamos las distintas frecuencias dadas en la consigna, las cuales son : $500Hz, 999Hz, 1001Hz$ y  $2001Hz$. Es necesario entender, antes de empezar a evaluar los resultados, dos detalles importantes. Primero debemos entender que Nyquist propone a la frecuencia de muestreo como, por lo menos, dos veces más que la frecuencia máxima de mi señal. Despejando con la frecuecia de Nyquist nos quedaría una expresión del tipo $sin (πn)$, la cual claramente vemos que siempre dará $0$, por lo que idealmente al visualizar la función no deberíamos ver nada, pero en la realidad toma valores muy cercanos a cero pero no nulos, por lo que el ploteo (por cómo se grafica en python) muestra representaciones irrisorias. 
+
+
+&emsp;&emsp;&emsp; Probamos con   $ff = 500$ : 
