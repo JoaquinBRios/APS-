@@ -3,7 +3,7 @@
 """
 Created on Thu Sep 17 22:49:41 2026
 
-@author: tomy
+@author: JOACO
 """
 
 #%% Librerías
@@ -17,7 +17,7 @@ from scipy.fft import fft,  fftfreq
 
 import scipy.io as sio
 from scipy.io.wavfile import write
-"""
+
 #%%Definiciones
 N = 1000
 fs = 1000
@@ -117,7 +117,6 @@ plt.legend()
 plt.xlim(0,15)
 plt.show()
 
-"""
 #%%
 
 ####################
@@ -131,8 +130,6 @@ import scipy.signal as sig
 #%%
 ##Introduzco función para estimar vía Blackman-Tukey
 
-
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 ####################
 # Lectura de audio #
 ####################
@@ -184,10 +181,9 @@ def blackman_tukey(x, fs_audio, M=None):
 
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
-fs_LCC, data = wavfile.read(
-    Path(__file__).parent / "pdstestbench" / "la cucaracha.wav"
-)
+fs_LCC, data = wavfile.read(Path(__file__).parent / "la cucaracha.wav")
 
+sd.play(data, fs_LCC)
 ax1.plot(data)
 ax1.set_title("Audio de La Cucaracha")
 ax1.set_xlabel("Muestras")
@@ -199,9 +195,10 @@ frec, DEP_AUDIO_BT = blackman_tukey(data, fs_LCC)
 ax2.plot(frec, DEP_AUDIO_BT, label="Blackman–Tukey")
 ax2.set_title("Estimación de audio - Blackman–Tukey")
 ax2.set_xlabel("Frecuencia [Hz]")
-ax2.set_ylabel("DEP [cuentas²/Hz]")
+ax2.set_ylabel("DEP [W/Hz]")
 ax2.legend()
 ax2.grid(True)
 
+sd.wait()
 plt.tight_layout()
 plt.show()
